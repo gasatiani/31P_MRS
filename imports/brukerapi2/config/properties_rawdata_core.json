@@ -1,0 +1,138 @@
+{
+  "numpy_dtype": [
+    {
+        "cmd": "np.dtype('int32').newbyteorder('<')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_32BIT_SGN_INT'",
+          "#BYTORDA=='little'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('int16').newbyteorder('<')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_16BIT_SGN_INT'",
+          "#BYTORDA=='little'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('float32').newbyteorder('<')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_32BIT_FLOAT'",
+          "#BYTORDA=='little'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('int32').newbyteorder('>')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_32BIT_SGN_INT'",
+          "#BYTORDA=='big'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('int16').newbyteorder('>')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_16BIT_SGN_INT'",
+          "#BYTORDA=='big'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('float32').newbyteorder('>')",
+        "conditions": [
+          "#GO_raw_data_format=='GO_32BIT_FLOAT'",
+          "#BYTORDA=='big'",
+          ["#ACQ_sw_version",["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('i4').newbyteorder('<')",
+        "conditions": [
+          "#ACQ_word_size=='_32_BIT'",
+          "#BYTORDA=='little'",
+          ["#ACQ_sw_version",["<PV-360.1.1>", "<PV-360.2.0.pl.1>" , "<PV-360.3.2>", "<PV-360.3.4>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('i4').newbyteorder('<')",
+        "conditions": [
+          "#ACQ_ScanPipeJobSettings[0][1]=='STORE_32bit_signed'",
+          "#BYTORDA=='little'",
+          ["@subtype",["job0","fid"]],
+          ["#ACQ_sw_version",["<PV-360.2.0.pl.1>" , "<PV-360.3.2>", "<PV-360.3.4>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('i4').newbyteorder('<')",
+        "conditions": [
+          "#ACQ_ScanPipeJobSettings[1][1]=='STORE_32bit_signed'",
+          "#BYTORDA=='little'",
+          ["@subtype",["job1","Navigator"]],
+          ["#ACQ_sw_version",["<PV-360.2.0.pl.1>" , "<PV-360.3.2>", "<PV-360.3.4>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('f8').newbyteorder('<')",
+        "conditions": [
+          "#ACQ_ScanPipeJobSettings[0][1]=='STORE_64bit_signed'",
+          "#BYTORDA=='little'",
+          ["@subtype",["job0","fid"]],
+          ["#ACQ_sw_version",["<PV-360.2.0.pl.1>" , "<PV-360.3.2>", "<PV-360.3.4>"]]
+        ]
+    },
+    {
+        "cmd": "np.dtype('f4').newbyteorder('<')",
+        "conditions": [
+          "#ACQ_ScanPipeJobSettings[1][1]=='STORE_64bit_signed'",
+          "#BYTORDA=='little'",
+          ["@subtype",["job1","Navigator"]],
+          ["#ACQ_sw_version",["<PV-360.2.0.pl.1>" , "<PV-360.3.2>", "<PV-360.3.4>"]]
+        ]
+    }
+  ],
+  "job_desc": [
+    {
+      "cmd": "#ACQ_jobs.primed_dict(7)['<{}>'.format(@subtype)]",
+      "conditions": [
+        ["#ACQ_sw_version", ["<PV-360.1.1>","<PV-360.2.0.pl.1>","<PV-360.3.2>","<PV-360.3.4>"]]
+      ]
+    },
+    {
+      "cmd": "#ACQ_jobs.nested[0]",
+      "conditions": [
+        ["#ACQ_sw_version", ["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>", "<PV-360.1.1>",  "<PV-360.2.0.pl.1>", "<PV-360.3.2>", "<PV-360.3.4>"]],
+        "@subtype == 'job0'"
+      ]
+    },
+    {
+      "cmd": "#ACQ_jobs.nested[1]",
+      "conditions": [
+        ["#ACQ_sw_version", ["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>", "<PV-360.1.1>", "<PV-360.2.0.pl.1>", "<PV-360.3.2>", "<PV-360.3.4>"]],
+        "@subtype == 'job1'"
+      ]
+    },
+    {
+      "cmd": "#ACQ_jobs.nested[1]",
+      "conditions": [
+        ["#ACQ_sw_version", ["<PV 5.1>", "<PV 6.0>", "<PV 6.0.1>", "<PV-7.0.0>", "<PV-360.1.1>", "<PV-360.2.0.pl.1>", "<PV-360.3.2>", "<PV-360.3.4>"]],
+        "@subtype == 'Navigator'"
+      ]
+    }
+  ],
+  "channels": [
+    {
+      "cmd": "#PVM_EncNReceivers",
+      "conditions": [
+      ]
+    }
+  ],
+  "shape_storage": [
+    {
+      "cmd": "(@job_desc[0],) + (@channels,) + (@job_desc[3],)",
+      "conditions": []
+    }
+  ]
+}
